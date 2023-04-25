@@ -108,7 +108,7 @@ Cloud Build ICON은 [GCP Icon Library](https://cloud.google.com/icons?hl=ja)를 
                         ```
                         ### Find Boto Configuration
                         $gsutil version -l
-                        config path(s): /Users/we/.config/gcloud/legacy_credentials/jgs@wemakeprice.com/.boto
+                        config path(s): /Users/we/.config/gcloud/legacy_credentials/jgs/.boto
                         ```
                     2.  vim을 활용하여 .boto를 아래와 같이 수정 및 저장해줍니다.
                         ```
