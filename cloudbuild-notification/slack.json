@@ -1,0 +1,57 @@
+[
+    {
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": "*Status:* *{{.Params.buildStatus}}* {{ if eq .Params.buildStatus `PENDING`}}🟠{{ else if eq .Params.buildStatus `QUEUED` }}🥡{{ else if eq .Params.buildStatus `SUCCESS` }}✅{{ else }}❌{{ end }}"
+          }
+    },
+    {
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": "*Trigger:* *{{.Build.Substitutions.TRIGGER_NAME}}*"
+        }
+    },
+      {
+        "type": "section",
+        "fields": [
+          {
+            "type": "mrkdwn",
+            "text": "*ProjectId:*\n <https://console.cloud.google.com/cloud-build/triggers;region=asia-northeast3?project={{.Build.ProjectId}}|{{.Build.ProjectId}}>"
+          },
+          {
+            "type": "mrkdwn",
+            "text": "*Repository:*\n <https://source.developers.google.com/p/{{.Build.ProjectId}}/r/{{.Build.Substitutions.REPO_NAME}}|{{.Build.Substitutions.REPO_NAME}}>"
+          },
+          {
+            "type": "mrkdwn",
+            "text": "*Branch:*\n{{.Build.Substitutions.BRANCH_NAME}}"
+          },
+          {
+            "type": "mrkdwn",
+            "text": "*Commit:* \n<https://source.developers.google.com/p/{{.Build.ProjectId}}/r/{{.Build.Substitutions.REPO_NAME}}/+/{{.Build.Substitutions.COMMIT_SHA}}|{{.Build.Substitutions.SHORT_SHA}}>"
+          }
+        ]
+    },
+    {
+      "type": "divider"
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "View Build Logs"
+      },
+      "accessory": {
+        "type": "button",
+        "text": {
+          "type": "plain_text",
+          "text": "Logs"
+        },
+        "value": "click_me_123",
+        "url": "https://console.cloud.google.com/cloud-build/builds;region=asia-northeast3/{{.Build.Id}};?project={{.Build.ProjectId}}",
+        "action_id": "button-action"
+      }
+    }
+]
